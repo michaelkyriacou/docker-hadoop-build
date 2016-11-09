@@ -37,7 +37,7 @@ ENV M2_HOME /usr/share/apache-maven-${M2_VER}
 ENV PATH $PATH:$M2_HOME/bin
 
 # hadoop
-RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.7.0/hadoop-2.7.0-src.tar.gz | tar -xz -C /tmp/
+RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.7.3/hadoop-2.7.3-src.tar.gz | tar -xz -C /tmp/
 
 # protoc -ohhh
 RUN curl https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2 | bunzip2|tar -x -C /tmp
@@ -50,7 +50,7 @@ ENV export LD_RUN_PATH /usr/local/lib
 RUN cd /tmp/hadoop-2.7.0-src && mvn package -Pdist,native -DskipTests -Dtar
 
 # tar to stdout
-CMD tar -cv -C /tmp/hadoop-2.7.0-src/hadoop-dist/target/hadoop-2.7.0/lib/native/ .
+CMD tar -cv -C /tmp/hadoop-2.7.3-src/hadoop-dist/target/hadoop-2.7.3/lib/native/ .
 
 # docker run --rm  sequenceiq/hadoop-nativelibs > x.tar
 # get bintray helper
